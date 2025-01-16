@@ -53,12 +53,14 @@ class AdminController extends Controller
      */
     public function login(Request $request): RedirectResponse
     {
+        // dd($request->all());
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
         if (Auth::guard('admin')->attempt($credentials)) {
+            // dd('gg');
             $request->session()->regenerate();
 
             return redirect()->intended('admin-dashboard');

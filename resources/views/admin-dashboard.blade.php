@@ -1,8 +1,20 @@
 <x-app-layout>
     <x-slot name="header">
+    @auth('admin')
+
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Admin Dashboard') }}
         </h2>
+        @elseauth('student')
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Student Dashboard') }}
+        </h2>
+
+        @elseauth('teacher')
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Teacher Dashboard') }}
+        </h2>
+        @endauth
     </x-slot>
 
     <div class="py-12">

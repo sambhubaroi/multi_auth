@@ -59,6 +59,16 @@
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+                        @elseauth('teacher')
+                        <form method="POST" action="{{ route('teacher-logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('teacher-logout')"
+                                onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
                         @elseauth
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
